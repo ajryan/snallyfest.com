@@ -77,9 +77,12 @@
   }
   </script>
 
+  <!-- Olivetti Lettera 22: primary font (matches flyer body text) -->
+  <link href="https://fonts.cdnfonts.com/css/zai-olivetti-lettera-22-typewriter" rel="stylesheet">
+  <!-- Pacifico: secondary font (best match for "August / 2026" script on flyer) -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -93,7 +96,7 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="hero-title">Snallyfest</h1>
+      <h1 class="hero-title"><span class="letter-cap">S</span><span class="letter-mid">NALLYFES</span><span class="letter-cap">T</span></h1>
       <p class="hero-dates">August 14 &amp; 15, 2026</p>
       <p class="hero-location">Frederick, Maryland</p>
       <div class="hero-cta">
@@ -101,10 +104,8 @@
         <a href="#flyer" class="btn btn-ghost">See Lineup</a>
       </div>
     </div>
-    <a href="#flyer" class="scroll-down" aria-label="Scroll to lineup">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
+    <a href="#flyer" class="section-arrow" aria-label="Scroll to lineup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </a>
   </section>
 
@@ -120,12 +121,15 @@
         loading="eager"
       >
     </div>
+    <a href="#tickets" class="section-arrow" aria-label="Scroll to tickets">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </section>
 
   <!-- ============================================================
-       TICKETS
+       TICKETS + VENUES (merged)
        ============================================================ -->
-  <section class="tickets-section" id="tickets" aria-label="Tickets">
+  <section class="tickets-section" id="tickets" aria-label="Tickets and venues">
     <div class="container">
       <h2 class="section-title">Get Your Tickets</h2>
       <p class="section-sub">Two days &middot; Five venues &middot; 30+ bands</p>
@@ -134,15 +138,10 @@
         Tickets Coming Soon
       </a>
       <p class="ticket-note">Presented by <a href="https://braindead.live" target="_blank" rel="noopener noreferrer">Braindead.Live</a></p>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       VENUES
-       ============================================================ -->
-  <section class="venues-section" id="venues" aria-label="Festival venues">
-    <div class="container">
-      <h2 class="section-title">Five Venues</h2>
+      <hr class="section-divider">
+
+      <h3 class="venues-heading">Five Venues</h3>
       <p class="section-sub">All within Frederick, Maryland</p>
       <ul class="venues-grid" role="list">
         <li class="venue">Creek Stage</li>
@@ -152,22 +151,9 @@
         <li class="venue">Eagles Club</li>
       </ul>
     </div>
-  </section>
-
-  <!-- ============================================================
-       PHOTO GALLERY — horizontal scroll strip
-       ============================================================ -->
-  <section class="gallery-section" id="gallery" aria-label="Photo gallery">
-    <h2 class="section-title">From the Fest</h2>
-    <div class="gallery-strip" role="list">
-      <img src="assets/edward-01.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-02.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-03.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-04.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-05.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-06.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-      <img src="assets/edward-07.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
-    </div>
+    <a href="#signup" class="section-arrow" aria-label="Scroll to email signup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </section>
 
   <!-- ============================================================
@@ -197,9 +183,25 @@
   </section>
 
   <!-- ============================================================
+       PHOTO GALLERY — horizontal scroll strip
+       ============================================================ -->
+  <section class="gallery-section" id="gallery" aria-label="Photo gallery">
+    <h2 class="section-title">From the Fest</h2>
+    <div class="gallery-strip" role="list">
+      <img src="assets/edward-01.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-02.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-03.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-04.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-05.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-06.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+      <img src="assets/edward-07.jpg" alt="Live performance at Snallyfest" loading="lazy" role="listitem">
+    </div>
+  </section>
+
+  <!-- ============================================================
        FOOTER / SOCIAL LINKS
        ============================================================ -->
-  <footer class="site-footer" aria-label="Site footer">
+  <footer class="site-footer" id="footer" aria-label="Site footer">
     <div class="container">
       <p class="footer-title">Snallyfest</p>
       <p class="footer-dates">August 14 &amp; 15, 2026 &middot; Frederick, Maryland</p>

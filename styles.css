@@ -22,7 +22,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'zai Olivetti Lettera 22 Typewriter', 'Courier New', monospace;
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -43,10 +43,35 @@ img { display: block; max-width: 100%; }
   border: 0;
 }
 
-/* ── Typography ───────────────────────────────────────────── */
-h1, h2, .hero-dates, .hero-location, .section-title, .footer-title {
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  letter-spacing: 0.05em;
+/* ── Typography ───────────────────────────────────────────────
+   Primary:   'zai Olivetti Lettera 22 Typewriter' — everything
+   Secondary: 'Pacifico' — dates / sub-text (matches flyer script)
+   ─────────────────────────────────────────────────────────── */
+
+h1, h2, h3,
+.section-title, .venues-heading, .footer-title,
+.btn, .venue {
+  font-family: 'zai Olivetti Lettera 22 Typewriter', 'Courier New', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* Pacifico for the script / date elements */
+.hero-dates,
+.hero-location,
+.section-sub {
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 0;
+}
+
+/* ── Hero title: larger outer letters (matches flyer S…T arch) */
+/* flex on the parent gives true top-alignment; no vertical-align needed */
+.hero-title .letter-cap {
+  font-size: 1.38em;
+  line-height: 1;
+}
+
+.hero-title .letter-mid {
+  line-height: 1;
 }
 
 /* ── Container ────────────────────────────────────────────── */
@@ -63,8 +88,6 @@ h1, h2, .hero-dates, .hero-location, .section-title, .footer-title {
   border: 2px solid currentColor;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-family: 'Bebas Neue', sans-serif;
   font-size: 1.1rem;
   cursor: pointer;
   background: transparent;
@@ -97,14 +120,14 @@ h1, h2, .hero-dates, .hero-location, .section-title, .footer-title {
 }
 
 /* ── Section chrome ───────────────────────────────────────── */
-section { padding: 5rem 0; }
+section { padding: 5rem 0; position: relative; }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   color: var(--blue);
   text-align: center;
   margin-bottom: 0.6rem;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .section-sub {
@@ -150,6 +173,9 @@ section { padding: 5rem 0; }
   z-index: 1;
 }
 
+/* hero arrow sits above overlay (z-index: 1) and content (z-index: 2) */
+.hero .section-arrow { z-index: 3; }
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -162,23 +188,34 @@ section { padding: 5rem 0; }
 }
 
 .hero-title {
-  font-size: clamp(4rem, 18vw, 10rem);
+  font-size: clamp(3rem, 14vw, 8rem);
   color: var(--blue);
-  text-shadow: 3px 4px 0 rgba(0,0,0,0.5);
-  line-height: 0.9;
+  text-shadow:
+    3px 4px 0 var(--pink),
+    6px 7px 0 rgba(0,0,0,0.5);
+  line-height: 1;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  /* flex gives true top-edge alignment across mixed font sizes */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* condense glyphs horizontally */
+  transform: scaleX(0.85);
+  transform-origin: center top;
 }
 
 .hero-dates {
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  /* Yellowtail is script — no letter-spacing, let the cursive breathe */
+  font-size: clamp(1.4rem, 5vw, 2.6rem);
   color: var(--pink);
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
 .hero-location {
-  font-size: clamp(0.9rem, 3vw, 1.5rem);
+  font-size: clamp(1rem, 3.5vw, 1.8rem);
   color: var(--text);
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   margin-bottom: 1.5rem;
 }
 
@@ -189,38 +226,80 @@ section { padding: 5rem 0; }
   justify-content: center;
 }
 
-/* scroll indicator */
-.scroll-down {
+/* ── Section scroll arrows ────────────────────────────────── */
+.section-arrow {
   position: absolute;
-  bottom: 1.75rem;
+  bottom: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
-  color: var(--text);
-  opacity: 0.5;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  animation: bounce-down 2.2s ease-in-out infinite;
+  color: var(--text);
+  /* frosted-glass backdrop so arrow is legible over any content */
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  animation: arrow-bounce 2.4s ease-in-out infinite;
 }
-.scroll-down svg { width: 28px; height: 28px; }
 
-@keyframes bounce-down {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
-  50%       { transform: translateX(-50%) translateY(10px); opacity: 0.85; }
+.section-arrow svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.section-arrow:hover,
+.section-arrow:focus-visible {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: var(--blue);
+  color: var(--blue);
+  outline: none;
+  animation: none;
+  transform: translateX(-50%) translateY(3px);
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.75; }
+  50%       { transform: translateX(-50%) translateY(6px); opacity: 1;    }
 }
 
 
 /* ============================================================
    FLYER
+   Fills the viewport minus a small inset on all sides.
+   Uses object-fit: contain so the full poster is always
+   visible — no clipping, no overflow — on every screen size.
    ============================================================ */
 .flyer-section {
   background: var(--bg-alt);
-  padding: 4.5rem 0;
+  padding: 0;
+  /* section fills the viewport height */
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* remove the generic container constraints for this section */
+.flyer-section .container {
+  display: contents;
 }
 
 .flyer-img {
-  max-width: 480px;
-  width: 100%;
-  margin: 0 auto;
+  /* shrink to fit within the viewport, leaving a small inset */
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100svh - 2rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
   box-shadow: 0 12px 60px rgba(0,0,0,0.7);
 }
 
@@ -240,10 +319,23 @@ section { padding: 5rem 0; }
 .ticket-note a:hover { text-decoration: underline; }
 
 
-/* ============================================================
-   VENUES
-   ============================================================ */
-.venues-section { text-align: center; }
+/* ── Merged tickets + venues section ────────────────────────── */
+.tickets-section { text-align: center; }
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3.5rem auto;
+  width: 60%;
+}
+
+.venues-heading {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  color: var(--pink);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
 
 .venues-grid {
   display: flex;
@@ -258,9 +350,6 @@ section { padding: 5rem 0; }
   border: 1px solid var(--pink);
   color: var(--pink);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.85rem;
-  font-family: 'Bebas Neue', sans-serif;
   font-size: 1rem;
 }
 
@@ -350,7 +439,7 @@ section { padding: 5rem 0; }
 }
 
 .footer-title {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: var(--blue);
   margin-bottom: 0.2rem;
 }

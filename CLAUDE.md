@@ -9,7 +9,7 @@ Static landing page for **Snallyfest** — a two-day music festival in Frederick
 ## Stack
 
 Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
-- Google Fonts: Bebas Neue + Inter (loaded via `<link>` in `index.html`)
+- CDNFonts: Death Record · zai Olivetti Lettera 22 Typewriter (loaded via `<link>` in `index.html`)
 - `.nojekyll` prevents GitHub Pages from running Jekyll
 
 ## Files
@@ -33,15 +33,28 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 --text-muted: #7a7672   muted/secondary text
 ```
 
+## Fonts
+
+| Font | CSS family name | Usage |
+|---|---|---|
+| Olivetti Lettera 22 | `'zai Olivetti Lettera 22 Typewriter'` | Primary — all headings, body, buttons, venues |
+| Pacifico | `'Pacifico'` | Secondary — hero dates/location, section subtitles |
+
+Olivetti Lettera via `fonts.cdnfonts.com` (free personal use; commercial license required).
+Pacifico via Google Fonts (free, open source).
+
+Hero title uses `.letter-cap` spans on the first and last letters (`font-size: 1.38em; vertical-align: bottom`) to reproduce the arched S…T size effect from the flyer.
+
 ## Sections (top to bottom)
 
-1. **Hero** — full-screen autoplay video background with title overlay and CTA buttons
-2. **Flyer** (`#flyer`) — centered `flyer_2026.JPEG` poster
-3. **Tickets** (`#tickets`) — `#ticket-link` href is a placeholder; replace with real URL
-4. **Venues** (`#venues`) — five venue names (Creek Stage, Sky Stage, Cafe Nola, Sandbox Brewhouse, Eagles Club)
+1. **Hero** — full-screen autoplay video background; title uses `.letter-cap` spans on S and T
+2. **Flyer** (`#flyer`) — viewport-filling `flyer_2026.JPEG` (100svh, `object-fit: contain` with 1rem inset)
+3. **Tickets + Venues** (`#tickets`) — merged section; `#ticket-link` href is a placeholder; separated by `.section-divider`
+4. **Email signup** (`#signup`) — stub form; replace the `<form>` block with provider embed
 5. **Gallery** (`#gallery`) — horizontal scroll strip with lightbox; drag-to-scroll enabled
-6. **Email signup** (`#signup`) — stub form; replace with provider embed (Mailchimp, ConvertKit, etc.)
-7. **Footer** — social links (all `href="#"` placeholders) + Braindead.Live credit
+6. **Footer** (`#footer`) — social links (all `href="#"` placeholders) + Braindead.Live credit
+
+Scroll arrows (`.section-arrow`) appear on: hero, flyer, tickets+venues. No arrows on signup or gallery.
 
 ## Things still needing real values
 
