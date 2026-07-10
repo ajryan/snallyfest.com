@@ -77,31 +77,13 @@ if (strip) {
 }
 
 
-// ── Flyer Instagram share ─────────────────────────────────────
-// Mobile: triggers OS native share sheet (can target Instagram Stories).
-// Desktop / unsupported: opens the Instagram post directly.
-// Update INSTAGRAM_URL when the real post is live.
+// ── Flyer Instagram link ──────────────────────────────────────
 const INSTAGRAM_URL = 'https://www.instagram.com/p/Dafwi7aOVdu/';
 
 const shareBtn = document.getElementById('flyer-share-btn');
 if (shareBtn) {
-  shareBtn.addEventListener('click', async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: 'Snallyfest 2026',
-          text: 'Snallyfest 2026 — August 14 & 15, Frederick, Maryland',
-          url: INSTAGRAM_URL,
-        });
-      } catch (err) {
-        // User cancelled the share sheet — do nothing
-        if (err.name !== 'AbortError') {
-          window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
-        }
-      }
-    } else {
-      window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
-    }
+  shareBtn.addEventListener('click', () => {
+    window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
   });
 }
 
