@@ -77,17 +77,84 @@ if (strip) {
 }
 
 
-// ── Email signup placeholder ─────────────────────────────────
-// Replace this handler with your email provider's embed/form handling.
+// ── Flyer Instagram share ─────────────────────────────────────
+// Mobile: triggers OS native share sheet (can target Instagram Stories).
+// Desktop / unsupported: opens the Instagram post directly.
+// Update INSTAGRAM_URL when the real post is live.
+const INSTAGRAM_URL = 'https://www.instagram.com/p/Dafwi7aOVdu/';
+
+const shareBtn = document.getElementById('flyer-share-btn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Snallyfest 2026',
+          text: 'Snallyfest 2026 — August 14 & 15, Frederick, Maryland',
+          url: INSTAGRAM_URL,
+        });
+      } catch (err) {
+        // User cancelled the share sheet — do nothing
+        if (err.name !== 'AbortError') {
+          window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+        }
+      }
+    } else {
+      window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+    }
+  });
+}
+
+
+// ── Email signup (Mailchimp JSONP) ───────────────────────────
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
   signupForm.addEventListener('submit', e => {
     e.preventDefault();
-    const email = signupForm.querySelector('input[type="email"]').value;
-    const btn   = signupForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Thanks!';
+
+    const btn    = signupForm.querySelector('button[type="submit"]');
+    const params = new URLSearchParams(new FormData(signupForm));
+    const cbName = 'mcCb_' + Date.now();
+
+    btn.textContent = '...';
     btn.disabled = true;
-    signupForm.querySelector('input[type="email"]').disabled = true;
-    console.info('Signup placeholder — integrate email provider for:', email);
+
+    // Remove any previous error message
+    const prev = signupForm.querySelector('.signup-error');
+    if (prev) prev.remove();
+
+    window[cbName] = function (res) {
+      delete window[cbName];
+      const s = document.getElementById('mc-jsonp');
+      if (s) s.remove();
+
+      if (res.result === 'success') {
+        btn.textContent = 'Thanks!';
+        signupForm.querySelectorAll('input, textarea').forEach(i => { i.disabled = true; });
+      } else {
+        btn.textContent = 'Subscribe';
+        btn.disabled = false;
+        const err = document.createElement('p');
+        err.className = 'signup-error';
+        // Mailchimp prepends a numeric code to some error messages — strip it
+        err.textContent = (res.msg || 'Something went wrong. Please try again.')
+          .replace(/^\d+ - /, '');
+        signupForm.appendChild(err);
+      }
+    };
+
+    const script  = document.createElement('script');
+    script.id     = 'mc-jsonp';
+    script.src    = `https://live.us3.list-manage.com/subscribe/post-json?${params}&c=${cbName}`;
+    document.body.appendChild(script);
+
+    // Fallback: re-enable if Mailchimp doesn't respond within 10 s
+    setTimeout(() => {
+      if (window[cbName]) {
+        delete window[cbName];
+        btn.textContent = 'Subscribe';
+        btn.disabled = false;
+      }
+    }, 10000);
   });
 }

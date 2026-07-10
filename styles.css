@@ -45,11 +45,12 @@ img { display: block; max-width: 100%; }
 
 /* ── Typography ───────────────────────────────────────────────
    Primary:   'zai Olivetti Lettera 22 Typewriter' — everything
-   Secondary: 'Pacifico' — dates / sub-text (matches flyer script)
+   Secondary: 'Pacifico' — hero dates / location (flyer script)
+   Sub-text:  OS-native serif (Georgia / equivalents)
    ─────────────────────────────────────────────────────────── */
 
 h1, h2, h3,
-.section-title, .venues-heading, .footer-title,
+.section-title, .venues-heading,
 .btn, .venue {
   font-family: 'zai Olivetti Lettera 22 Typewriter', 'Courier New', monospace;
   letter-spacing: 0.04em;
@@ -57,22 +58,16 @@ h1, h2, h3,
 
 /* Pacifico for the script / date elements */
 .hero-dates,
-.hero-location,
-.section-sub {
+.hero-location {
   font-family: 'Pacifico', cursive;
   letter-spacing: 0;
 }
 
-/* ── Hero title: larger outer letters (matches flyer S…T arch) */
-/* flex on the parent gives true top-alignment; no vertical-align needed */
-.hero-title .letter-cap {
-  font-size: 1.38em;
-  line-height: 1;
+/* OS-native serif for sub-text ("Two days · Five venues · 30+ bands" etc.) */
+.section-sub {
+  font-family: Georgia, Cambria, 'Palatino Linotype', Palatino, serif;
 }
 
-.hero-title .letter-mid {
-  line-height: 1;
-}
 
 /* ── Container ────────────────────────────────────────────── */
 .container {
@@ -111,6 +106,16 @@ h1, h2, h3,
 }
 .btn-ghost:hover, .btn-ghost:focus-visible {
   background: rgba(255,255,255,0.08);
+  outline: none;
+}
+
+.btn-secondary {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background: var(--pink);
+  color: var(--bg);
   outline: none;
 }
 
@@ -187,36 +192,29 @@ section { padding: 5rem 0; position: relative; }
   gap: 0.4rem;
 }
 
-.hero-title {
-  font-size: clamp(3rem, 14vw, 8rem);
-  color: var(--blue);
-  text-shadow:
-    3px 4px 0 var(--pink),
-    6px 7px 0 rgba(0,0,0,0.5);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-  /* flex gives true top-edge alignment across mixed font sizes */
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  /* condense glyphs horizontally */
-  transform: scaleX(0.85);
-  transform-origin: center top;
+.hero-logo-wrap {
+  margin: 0;
+  line-height: 0;
 }
 
-.hero-dates {
-  /* Yellowtail is script — no letter-spacing, let the cursive breathe */
-  font-size: clamp(1.4rem, 5vw, 2.6rem);
-  color: var(--pink);
-  letter-spacing: 0;
+.hero-logo {
+  width: min(88vw, 720px);
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.85));
 }
 
-.hero-location {
-  font-size: clamp(1rem, 3.5vw, 1.8rem);
-  color: var(--text);
-  letter-spacing: 0;
-  margin-bottom: 1.5rem;
+.hero-dates-img {
+  width: min(54vw, 416px);
+  height: auto;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.85));
+}
+
+.hero-location-img {
+  width: min(86vw, 682px);
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.85));
 }
 
 .hero-cta {
@@ -224,6 +222,11 @@ section { padding: 5rem 0; position: relative; }
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.hero-cta .btn {
+  font-size: 1.375rem;
+  padding: 0.875rem 2.5rem;
 }
 
 /* ── Section scroll arrows ────────────────────────────────── */
@@ -271,6 +274,31 @@ section { padding: 5rem 0; position: relative; }
   50%       { transform: translateX(-50%) translateY(6px); opacity: 1;    }
 }
 
+/* ── Hero "presented by" credit ───────────────────────────── */
+.hero-presented-by {
+  position: absolute;
+  bottom: 1.4rem;
+  right: 1.5rem;
+  z-index: 2;
+  font-size: 1.44rem;
+  letter-spacing: 0.1em;
+  color: rgba(237, 232, 224, 0.65);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.hero-presented-by a {
+  color: var(--blue);
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.hero-presented-by a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
 
 /* ============================================================
    FLYER
@@ -303,12 +331,38 @@ section { padding: 5rem 0; position: relative; }
   box-shadow: 0 12px 60px rgba(0,0,0,0.7);
 }
 
+.flyer-share {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.5rem;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.flyer-share:hover,
+.flyer-share:focus-visible {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: var(--blue);
+  color: var(--blue);
+  outline: none;
+}
+
 
 /* ============================================================
-   TICKETS
+   TICKETS + VENUES
    ============================================================ */
-.tickets-section { text-align: center; }
-
 .ticket-note {
   margin-top: 1.5rem;
   color: var(--text-muted);
@@ -322,6 +376,8 @@ section { padding: 5rem 0; position: relative; }
 /* ── Merged tickets + venues section ────────────────────────── */
 .tickets-section { text-align: center; }
 
+.tickets-section .section-title { color: var(--pink); }
+
 .section-divider {
   border: none;
   border-top: 1px solid var(--border);
@@ -331,7 +387,7 @@ section { padding: 5rem 0; position: relative; }
 
 .venues-heading {
   font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  color: var(--pink);
+  color: var(--blue);
   text-align: center;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -347,10 +403,10 @@ section { padding: 5rem 0; position: relative; }
 
 .venue {
   padding: 0.55rem 1.3rem;
-  border: 1px solid var(--pink);
-  color: var(--pink);
+  border: 1px solid var(--blue);
+  color: var(--blue);
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 
@@ -404,18 +460,26 @@ section { padding: 5rem 0; position: relative; }
   text-align: center;
 }
 
+.signup-section .section-title { color: var(--pink); }
+
 .signup-form {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.65rem;
   max-width: 440px;
   margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: stretch;
 }
 
+.signup-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.signup-form input[type="text"],
 .signup-form input[type="email"] {
   flex: 1;
-  min-width: 210px;
+  min-width: 0;
   padding: 0.7rem 1rem;
   background: transparent;
   border: 2px solid var(--border);
@@ -425,8 +489,45 @@ section { padding: 5rem 0; position: relative; }
   outline: none;
   transition: border-color 0.18s;
 }
+.signup-form input[type="text"]::placeholder,
 .signup-form input[type="email"]::placeholder { color: var(--text-muted); }
-.signup-form input[type="email"]:focus { border-color: var(--blue); }
+.signup-form input[type="text"]:focus,
+.signup-form input[type="email"]:focus { border-color: var(--pink); }
+
+.signup-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.signup-consent input[type="checkbox"] {
+  accent-color: var(--pink);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  cursor: pointer;
+}
+
+/* Mailchimp honeypot — keep off-screen, never display:none */
+.mc-honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.signup-error {
+  color: var(--pink);
+  font-size: 0.88rem;
+  text-align: center;
+}
 
 
 /* ============================================================
@@ -438,10 +539,10 @@ section { padding: 5rem 0; position: relative; }
   border-top: 1px solid var(--border);
 }
 
-.footer-title {
-  font-size: 2.4rem;
-  color: var(--blue);
-  margin-bottom: 0.2rem;
+.footer-logo {
+  width: min(68vw, 280px);
+  height: auto;
+  margin: 0 auto 0.4rem;
 }
 
 .footer-dates {
@@ -460,7 +561,7 @@ section { padding: 5rem 0; position: relative; }
 
 .social-link {
   color: var(--text-muted);
-  transition: color 0.18s;
+  transition: color 0.18s, opacity 0.18s;
   line-height: 0;
 }
 .social-link:hover, .social-link:focus-visible {
@@ -468,13 +569,34 @@ section { padding: 5rem 0; position: relative; }
   outline: none;
 }
 
-.footer-credit {
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
+/* Brand colors */
+.social-link--facebook { color: #1877F2; }
+.social-link--facebook:hover, .social-link--facebook:focus-visible { color: #1877F2; opacity: 0.75; }
+
+.social-link--spotify { color: #1DB954; }
+.social-link--spotify:hover, .social-link--spotify:focus-visible { color: #1DB954; opacity: 0.75; }
+
+/* Instagram uses inline SVG gradient — no color override needed */
+.social-link--instagram:hover, .social-link--instagram:focus-visible { opacity: 0.75; }
+
+.footer-presented-by {
+  font-size: 1.44rem;
+  letter-spacing: 0.1em;
+  color: rgba(237, 232, 224, 0.65);
+  text-transform: lowercase;
+  margin: 0;
 }
-.footer-credit a { color: var(--pink); text-decoration: none; }
-.footer-credit a:hover { text-decoration: underline; }
+
+.footer-presented-by a {
+  color: var(--blue);
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.footer-presented-by a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
 
 
 /* ============================================================
