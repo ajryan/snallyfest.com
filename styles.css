@@ -658,4 +658,10 @@ section { padding: 5rem 0; position: relative; }
   .signup-form input[type="email"] { min-width: unset; }
 
   .hero-cta { flex-direction: column; align-items: center; }
+
+  /* Lift hero arrow above the "presented by" line */
+  .hero .section-arrow { bottom: 4rem; }
+
+  /* Tighten letter-spacing 40% so presented-by text doesn't crowd the arrow */
+  .hero-presented-by { letter-spacing: 0.06em; }
 }
