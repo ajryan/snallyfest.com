@@ -20,6 +20,8 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 | `styles.css` | All styles; CSS custom properties at `:root` |
 | `script.js` | Gallery lightbox, drag-to-scroll, email signup stub |
 | `assets/` | Images (`edward-01..07.jpg`, `flyer_2026.JPEG`) + video (`edward-snallyfest-2025.mp4`) |
+| `favicon.ico` / `favicon.png` / `apple-touch-icon.png` | Favicons (woodcut eye artwork) — root level |
+| `sitemap.xml` / `robots.txt` | SEO — single-URL sitemap; robots points to it |
 | `edward-snallyfest-2025.mp4` | Duplicate in root — prefer `assets/` copy |
 
 ## Key design tokens (CSS custom properties)
