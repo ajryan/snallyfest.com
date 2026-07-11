@@ -125,12 +125,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Umami analytics -->
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="5b9d6e69-32c0-421e-8a08-ab1001a3bc02"
-    ></script>
+    <!-- Umami analytics — only on the live site (not file:// or localhost) -->
+    <script>
+      if (location.hostname === "snallyfest.com") {
+        var umami = document.createElement("script");
+        umami.defer = true;
+        umami.src = "https://cloud.umami.is/script.js";
+        umami.setAttribute(
+          "data-website-id",
+          "5b9d6e69-32c0-421e-8a08-ab1001a3bc02"
+        );
+        document.head.appendChild(umami);
+      }
+    </script>
   </head>
   <body>
     <!-- ============================================================
@@ -164,7 +171,12 @@
           class="hero-location-img"
         />
         <div class="hero-cta">
-          <a href="#tickets" class="btn btn-primary">Get Tickets</a>
+          <a
+            href="#tickets"
+            class="btn btn-primary"
+            data-umami-event="hero-get-tickets"
+            >Get Tickets</a
+          >
           <a href="#flyer" class="btn btn-ghost">See Lineup</a>
         </div>
       </div>
@@ -247,6 +259,7 @@
           href="#"
           class="btn btn-secondary btn-large"
           id="ticket-link"
+          data-umami-event="buy-tickets"
           aria-label="Purchase tickets (coming soon)"
         >
           Tickets Coming Soon
@@ -284,8 +297,7 @@
 
     <!-- ============================================================
        EMAIL SIGNUP
-       Replace the form below with your email provider's embed code
-       (Mailchimp, ConvertKit, Buttondown, etc.)
+       Live Mailchimp form — submits via JSONP (see script.js)
        ============================================================ -->
     <section class="signup-section" id="signup" aria-label="Email signup">
       <div class="container">
@@ -349,7 +361,13 @@
             <input type="checkbox" name="group[27871][1]" value="1" required />
             <span>Add me to the Snallyfest mailing list</span>
           </label>
-          <button type="submit" class="btn btn-secondary">Subscribe</button>
+          <button
+            type="submit"
+            class="btn btn-secondary"
+            data-umami-event="email-signup"
+          >
+            Subscribe
+          </button>
         </form>
       </div>
     </section>
@@ -419,12 +437,14 @@
           presented by
           <a
             href="https://braindead.live"
+            data-umami-event="footer-braindead"
             target="_blank"
             rel="noopener noreferrer"
             >braindead live</a
           >&thinsp;<a
             href="https://www.instagram.com/brain.dead.live/"
             class="footer-ig-link"
+            data-umami-event="social-instagram"
             aria-label="Braindead Live on Instagram"
             target="_blank"
             rel="noopener noreferrer"
