@@ -10,6 +10,7 @@ Static landing page for **Snallyfest** — a two-day music festival in Frederick
 
 Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 - CDNFonts: Death Record · zai Olivetti Lettera 22 Typewriter (loaded via `<link>` in `index.html`)
+- Leaflet 1.9.4 (vendored at `assets/vendor/leaflet/`) + CARTO `dark_all` basemap tiles (free with attribution) for the venue map
 - `.nojekyll` prevents GitHub Pages from running Jekyll
 
 ## Files
@@ -18,8 +19,9 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 |---|---|
 | `index.html` | Single-page site — all sections |
 | `styles.css` | All styles; CSS custom properties at `:root` |
-| `script.js` | Gallery lightbox, drag-to-scroll, Mailchimp signup (JSONP submit) |
-| `assets/` | Images (`edward-01..07.jpg`, `flyer_2026.JPEG`) + video (`edward-snallyfest-2025.mp4`) |
+| `script.js` | Gallery lightbox, drag-to-scroll, venue map (Leaflet), Mailchimp signup (JSONP submit) |
+| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `flyer_2026.JPEG`) + video (`edward-snallyfest-2025.mp4`) |
+| `assets/vendor/leaflet/` | Vendored Leaflet 1.9.4 (`leaflet.js`, `leaflet.css`) |
 | `favicon.ico` / `favicon.png` / `apple-touch-icon.png` | Favicons (woodcut eye artwork) — root level |
 | `sitemap.xml` / `robots.txt` | SEO — single-URL sitemap; robots points to it |
 | `edward-snallyfest-2025.mp4` | Duplicate in root — prefer `assets/` copy |
@@ -51,7 +53,7 @@ Hero title uses `.letter-cap` spans on the first and last letters (`font-size: 1
 
 1. **Hero** — full-screen autoplay video background; title uses `.letter-cap` spans on S and T
 2. **Flyer** (`#flyer`) — viewport-filling `flyer_2026.JPEG` (100svh, `object-fit: contain` with 1rem inset)
-3. **Tickets + Venues** (`#tickets`) — merged section; `#ticket-link` href is a placeholder; separated by `.section-divider`
+3. **Tickets + Venues** (`#tickets`) — merged section; `#ticket-link` href is a placeholder; separated by `.section-divider`. Below the venue list: `#venue-map`, a Leaflet map with a pin per venue (coordinates hardcoded in `script.js`)
 4. **Email signup** (`#signup`) — live Mailchimp form; submits via JSONP in `script.js` (includes hidden honeypot fields — keep them)
 5. **Gallery** (`#gallery`) — horizontal scroll strip with lightbox; drag-to-scroll enabled
 6. **Footer** (`#footer`) — logo, dates, "presented by" braindead.live link + Instagram icon link

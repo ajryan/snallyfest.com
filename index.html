@@ -123,6 +123,8 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Leaflet (vendored) — venue map -->
+    <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" />
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Umami analytics — only on the live site (not file:// or localhost) -->
@@ -277,6 +279,12 @@
           <li class="venue">Sandbox Brewhouse</li>
           <li class="venue">Eagles Club</li>
         </ul>
+
+        <div
+          id="venue-map"
+          class="venue-map"
+          aria-label="Map of the five Snallyfest venues in downtown Frederick, Maryland"
+        ></div>
       </div>
       <a
         href="#signup"
@@ -514,6 +522,7 @@
 
     <!-- Lightbox (injected by script.js) -->
 
+    <script src="assets/vendor/leaflet/leaflet.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

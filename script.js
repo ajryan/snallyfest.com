@@ -77,6 +77,50 @@ if (strip) {
 }
 
 
+// ── Venue map (Leaflet + CARTO dark basemap) ─────────────────
+const mapEl = document.getElementById('venue-map');
+if (mapEl && typeof L !== 'undefined') {
+  const venues = [
+    { name: 'Creek Stage', addr: 'Carroll Creek Amphitheater', lat: 39.41264, lng: -77.40869 },
+    { name: 'Sky Stage', addr: '59 S Carroll St', lat: 39.41185, lng: -77.40797 },
+    { name: 'Cafe Nola', addr: '4 E Patrick St', lat: 39.41401, lng: -77.41055 },
+    { name: 'Eagles Club', addr: '207 W Patrick St', lat: 39.41383, lng: -77.41541 },
+    { name: 'Sandbox Brewhouse', addr: '880 N East St', lat: 39.42507, lng: -77.40328 },
+  ];
+
+  const map = L.map(mapEl, { scrollWheelZoom: false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20,
+  }).addTo(map);
+
+  const pin = L.divIcon({
+    className: 'venue-pin',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
+    popupAnchor: [0, -12],
+  });
+
+  const markers = L.featureGroup(
+    venues.map(v => {
+      const gmaps =
+        'https://www.google.com/maps/search/?api=1&query=' +
+        encodeURIComponent(`${v.name}, ${v.addr}, Frederick, MD 21701`);
+      return L.marker([v.lat, v.lng], { icon: pin, title: v.name, alt: v.name })
+        .bindPopup(
+          `<strong>${v.name}</strong><br>${v.addr}<br>` +
+          `<a href="${gmaps}" target="_blank" rel="noopener noreferrer">Directions</a>`
+        );
+    })
+  ).addTo(map);
+
+  map.fitBounds(markers.getBounds(), { padding: [45, 45] });
+}
+
+
 // ── Flyer Instagram link ──────────────────────────────────────
 const INSTAGRAM_URL = 'https://www.instagram.com/p/Dafwi7aOVdu/';
 
