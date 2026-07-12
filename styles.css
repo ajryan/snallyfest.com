@@ -418,11 +418,6 @@ section { padding: 5rem 0; position: relative; }
   padding: 4rem 0;
 }
 
-.gallery-section .section-title {
-  padding: 0 1.5rem;
-  margin-bottom: 2rem;
-}
-
 .gallery-strip {
   display: flex;
   gap: 6px;
