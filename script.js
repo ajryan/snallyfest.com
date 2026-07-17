@@ -2,6 +2,64 @@
    Snallyfest 2026 — script.js
    ============================================================ */
 
+// ── Hero video rotation ──────────────────────────────────────
+// hero-01 (first 10 s of the 2025 recap) always plays first; after
+// it ends, clips rotate at random with no immediate repeats.
+// Drop new clips in assets/ and add them here to join the rotation.
+const HERO_CLIPS = [
+  'assets/hero-01.mp4',
+  'assets/hero-02.mp4',
+  'assets/hero-03.mp4',
+];
+
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo && HERO_CLIPS.length > 1) {
+  heroVideo.removeAttribute('loop'); // loop is only the no-JS fallback
+
+  // Second <video> buffer so the next clip is preloaded and the
+  // swap is a crossfade instead of a black flash.
+  const buddy = heroVideo.cloneNode();
+  buddy.removeAttribute('autoplay');
+  buddy.removeAttribute('poster');
+  buddy.preload = 'auto';
+  buddy.classList.add('hero-video-hidden');
+  buddy.setAttribute('aria-hidden', 'true');
+  heroVideo.after(buddy);
+
+  let visible = heroVideo;
+  let standby = buddy;
+  let playingIdx = 0; // hero-01
+
+  function pickNextIdx() {
+    let i;
+    do {
+      i = Math.floor(Math.random() * HERO_CLIPS.length);
+    } while (i === playingIdx);
+    return i;
+  }
+
+  let queuedIdx = pickNextIdx();
+  standby.src = HERO_CLIPS[queuedIdx];
+  standby.load();
+
+  function rotateHero() {
+    standby.currentTime = 0;
+    const played = standby.play();
+    if (played) played.catch(() => {});
+    standby.classList.remove('hero-video-hidden');
+    visible.classList.add('hero-video-hidden');
+    [visible, standby] = [standby, visible];
+    playingIdx = queuedIdx;
+    queuedIdx = pickNextIdx();
+    standby.src = HERO_CLIPS[queuedIdx];
+    standby.load();
+  }
+
+  heroVideo.addEventListener('ended', rotateHero);
+  buddy.addEventListener('ended', rotateHero);
+}
+
+
 // ── Gallery lightbox ─────────────────────────────────────────
 const lightbox = document.createElement('div');
 lightbox.className = 'lightbox';

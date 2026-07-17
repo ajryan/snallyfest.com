@@ -19,12 +19,11 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 |---|---|
 | `index.html` | Single-page site — all sections |
 | `styles.css` | All styles; CSS custom properties at `:root` |
-| `script.js` | Gallery lightbox, drag-to-scroll, venue map (Leaflet), Mailchimp signup (JSONP submit) |
-| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `flyer_2026.png`) + video (`edward-snallyfest-2025.mp4`) |
+| `script.js` | Hero clip rotation (`HERO_CLIPS`), gallery lightbox, drag-to-scroll, venue map (Leaflet), Mailchimp signup (JSONP submit) |
+| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `fest-archive-01..19.jpg`, `flyer_2026.png`) + hero clips (`hero-01..03.mp4` — 10 s segments cut from `edward-snallyfest-2025.mp4`, which was removed from the repo but lives in git history) |
 | `assets/vendor/leaflet/` | Vendored Leaflet 1.9.4 (`leaflet.js`, `leaflet.css`) |
 | `favicon.ico` / `favicon.png` / `apple-touch-icon.png` | Favicons (woodcut eye artwork) — root level |
 | `sitemap.xml` / `robots.txt` | SEO — single-URL sitemap; robots points to it |
-| `edward-snallyfest-2025.mp4` | Duplicate in root — prefer `assets/` copy |
 
 ## Key design tokens (CSS custom properties)
 
@@ -51,7 +50,7 @@ Hero title uses `.letter-cap` spans on the first and last letters (`font-size: 1
 
 ## Sections (top to bottom)
 
-1. **Hero** — full-screen autoplay video background; title uses `.letter-cap` spans on S and T
+1. **Hero** — full-screen autoplay video background; `hero-01.mp4` always plays first, then `script.js` rotates randomly through the clips in `HERO_CLIPS` (no immediate repeats) with a two-`<video>` crossfade; title uses `.letter-cap` spans on S and T
 2. **Flyer** (`#flyer`) — viewport-filling `flyer_2026.png` (100svh, `object-fit: contain` with 1rem inset)
 3. **Tickets + Venues** (`#tickets`) — merged section; `#ticket-link` href is a placeholder; separated by `.section-divider`. Below the venue list: `#venue-map`, a Leaflet map with a pin per venue (coordinates hardcoded in `script.js`)
 4. **Email signup** (`#signup`) — live Mailchimp form; submits via JSONP in `script.js` (includes hidden honeypot fields — keep them)

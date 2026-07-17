@@ -135,7 +135,7 @@
         umami.src = "https://cloud.umami.is/script.js";
         umami.setAttribute(
           "data-website-id",
-          "5b9d6e69-32c0-421e-8a08-ab1001a3bc02"
+          "5b9d6e69-32c0-421e-8a08-ab1001a3bc02",
         );
         document.head.appendChild(umami);
       }
@@ -146,6 +146,8 @@
        HERO — full-screen video background
        ============================================================ -->
     <section class="hero" aria-label="Snallyfest 2026 hero">
+      <!-- hero-01 loads first; script.js rotates through the other
+           clips after it ends (loop is the no-JS fallback) -->
       <video
         class="hero-video"
         autoplay
@@ -153,10 +155,8 @@
         loop
         playsinline
         poster="assets/edward-01.jpg"
-      >
-        <source src="assets/edward-snallyfest-2025.webm" type="video/webm" />
-        <source src="assets/edward-snallyfest-2025.mp4" type="video/mp4" />
-      </video>
+        src="assets/hero-01.mp4"
+      ></video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-logo-wrap">
@@ -255,7 +255,7 @@
       aria-label="Tickets and venues"
     >
       <div class="container">
-        <h2 class="section-title">Get Your Tickets</h2>
+        <h2 class="section-title">GET YOUR TICKETS</h2>
         <!-- Replace href with actual ticket URL when available -->
         <a
           href="#"
@@ -387,103 +387,217 @@
       <div class="gallery-strip" role="list">
         <img
           src="assets/fest-2025-01.jpg"
-          alt="Full band performing under the vine-covered Snallyfest arch"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-01.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-01.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-02.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-02.jpg"
-          alt="Singer and guitarist in front of the Snallyfest banner"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-03.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-02.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-04.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-05.jpg"
-          alt="Violinist tuning up beside a stack of amps"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-05.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-08.jpg"
-          alt="Motion-blur fisheye shot of the band at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-06.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-03.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-07.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-03.jpg"
-          alt="Guitarist and bassist performing at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-08.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-04.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-09.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-07.jpg"
-          alt="View across the lawn of the stage and crowd at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-10.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-09.jpg"
-          alt="Motion-blur shot of the band in front of the Snallyfest banner"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-11.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-05.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-12.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-04.jpg"
-          alt="Vocalist at the mic with guitarist at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-13.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-06.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-14.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-06.jpg"
-          alt="Violinist playing on stage at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-15.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-10.jpg"
-          alt="Motion-blur shot of violinist and guitarist at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-16.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-07.jpg"
-          alt="Live performance at Snallyfest"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-17.jpg"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-18.jpg"
+          alt="snallyfest concert performance"
+          loading="lazy"
+          role="listitem"
+        />
+        <img
+          src="assets/fest-archive-19.jpg"
+          alt="snallyfest concert performance"
           loading="lazy"
           role="listitem"
         />
@@ -515,7 +629,37 @@
             aria-label="Braindead Live on Instagram"
             target="_blank"
             rel="noopener noreferrer"
-          ><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-bottom:2px"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="33%" stop-color="#e6683c"/><stop offset="55%" stop-color="#dc2743"/><stop offset="77%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            ><svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              aria-hidden="true"
+              style="
+                display: inline-block;
+                vertical-align: middle;
+                margin-bottom: 2px;
+              "
+            >
+              <defs>
+                <linearGradient
+                  id="ig-grad"
+                  x1="0%"
+                  y1="100%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop offset="0%" stop-color="#f09433" />
+                  <stop offset="33%" stop-color="#e6683c" />
+                  <stop offset="55%" stop-color="#dc2743" />
+                  <stop offset="77%" stop-color="#cc2366" />
+                  <stop offset="100%" stop-color="#bc1888" />
+                </linearGradient>
+              </defs>
+              <path
+                fill="url(#ig-grad)"
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              /></svg
+          ></a>
         </p>
       </div>
     </footer>
