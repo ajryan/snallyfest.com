@@ -10,6 +10,20 @@ const HERO_CLIPS = [
   'assets/hero-01.mp4',
   'assets/hero-02.mp4',
   'assets/hero-03.mp4',
+  'assets/hero-04.mp4',
+  'assets/hero-05.mp4',
+  'assets/hero-06.mp4',
+  'assets/hero-07.mp4',
+  'assets/hero-08.mp4',
+  'assets/hero-09.mp4',
+  'assets/hero-10.mp4',
+  'assets/hero-11.mp4',
+  'assets/hero-12.mp4',
+  'assets/hero-13.mp4',
+  'assets/hero-14.mp4',
+  'assets/hero-15.mp4',
+  'assets/hero-16.mp4',
+  'assets/hero-17.mp4',
 ];
 
 const heroVideo = document.querySelector('.hero-video');
@@ -42,8 +56,9 @@ if (heroVideo && HERO_CLIPS.length > 1) {
   standby.src = HERO_CLIPS[queuedIdx];
   standby.load();
 
-  function rotateHero() {
+  function performSwap() {
     standby.currentTime = 0;
+    standby.removeAttribute('poster'); // never flash the thumbnail mid-rotation
     const played = standby.play();
     if (played) played.catch(() => {});
     standby.classList.remove('hero-video-hidden');
@@ -53,6 +68,16 @@ if (heroVideo && HERO_CLIPS.length > 1) {
     queuedIdx = pickNextIdx();
     standby.src = HERO_CLIPS[queuedIdx];
     standby.load();
+  }
+
+  // Only swap once the queued clip has buffered enough to play through;
+  // until then the ended video stays frozen on its final frame.
+  function rotateHero() {
+    if (standby.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      performSwap();
+    } else {
+      standby.addEventListener('canplay', performSwap, { once: true });
+    }
   }
 
   heroVideo.addEventListener('ended', rotateHero);

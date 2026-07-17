@@ -20,7 +20,7 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 | `index.html` | Single-page site — all sections |
 | `styles.css` | All styles; CSS custom properties at `:root` |
 | `script.js` | Hero clip rotation (`HERO_CLIPS`), gallery lightbox, drag-to-scroll, venue map (Leaflet), Mailchimp signup (JSONP submit) |
-| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `fest-archive-01..19.jpg`, `flyer_2026.png`) + hero clips (`hero-01..03.mp4` — 10 s segments cut from `edward-snallyfest-2025.mp4`, which was removed from the repo but lives in git history) |
+| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `fest-archive-01..19.jpg`, `flyer_2026.png`) + hero clips (`hero-01..17.mp4` — ≤10 s h264 segments: 01–03 cut from `edward-snallyfest-2025.mp4`, 04–17 from phone .movs; raw sources removed from the repo, 01–03's source lives in git history) |
 | `assets/vendor/leaflet/` | Vendored Leaflet 1.9.4 (`leaflet.js`, `leaflet.css`) |
 | `favicon.ico` / `favicon.png` / `apple-touch-icon.png` | Favicons (woodcut eye artwork) — root level |
 | `sitemap.xml` / `robots.txt` | SEO — single-URL sitemap; robots points to it |
