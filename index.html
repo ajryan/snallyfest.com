@@ -90,13 +90,18 @@
           "name": "Braindead.Live",
           "url": "https://braindead.live"
         },
+        "offers": [
+          {
+            "@type": "Offer",
+            "@url": "https://buytickets.at/braindeadlive/2322599"
+          }
+        ],
         "performer": [
           { "@type": "MusicGroup", "name": "Edward!" },
           { "@type": "MusicGroup", "name": "LITZ" },
           { "@type": "MusicGroup", "name": "Weed Coughin" },
           { "@type": "MusicGroup", "name": "Good Time Jordie" },
-          { "@type": "MusicGroup", "name": "GlibHigh" },
-          { "@type": "MusicGroup", "name": "Noon Kahuna" },
+          { "@type": "MusicGroup", "name": "High Noon Kahuna" },
           { "@type": "MusicGroup", "name": "Timberwolves" },
           { "@type": "MusicGroup", "name": "Shut Up Voula" },
           { "@type": "MusicGroup", "name": "Shadow Apparatus" },
@@ -106,7 +111,22 @@
           { "@type": "MusicGroup", "name": "Front Royal" },
           { "@type": "MusicGroup", "name": "Vacant Windows" },
           { "@type": "MusicGroup", "name": "Swamp Whompers" },
-          { "@type": "MusicGroup", "name": "Georgia Rae & The Drunken Saints" }
+          { "@type": "MusicGroup", "name": "Georgia Rae & The Drunken Saints" },
+          { "@type": "MusicGroup": "name": "Fuzzy Skulls" },
+          { "@type": "MusicGroup": "name": "Ritchie Royale" },
+          { "@type": "MusicGroup": "name": "Fetcher" },
+          { "@type": "MusicGroup": "name": "Shamboogi" },
+          { "@type": "MusicGroup": "name": "Chico Perfect" },
+          { "@type": "MusicGroup": "name": "Nimrod's Sun" },
+          { "@type": "MusicGroup": "name": "Stainless Steve" },
+          { "@type": "MusicGroup": "name": "Fflesh" },
+          { "@type": "MusicGroup": "name": "Paper Lanterns" },
+          { "@type": "MusicGroup": "name": "Nick Ring & Friends" },
+          { "@type": "MusicGroup": "name": "Daryltron" },
+          { "@type": "MusicGroup": "name": "B4WE8" },
+          { "@type": "MusicGroup": "name": "Puce Moment" },
+          { "@type": "MusicGroup": "name": "Bikes" },
+          { "@type": "MusicGroup": "name": "Sir Lando" }
         ]
       }
     </script>
@@ -174,12 +194,15 @@
         />
         <div class="hero-cta">
           <a
-            href="#tickets"
+            href="https://buytickets.at/braindeadlive/2322599"
             class="btn btn-primary"
             data-umami-event="hero-get-tickets"
-            >Get Tickets</a
+            aria-label="Purchase tickets"
+            target="_blank"
           >
-          <a href="#flyer" class="btn btn-ghost">See Lineup</a>
+            Get Tickets
+          </a>
+          <a href="#flyer" class="btn btn-secondary">See Lineup</a>
         </div>
       </div>
       <p class="hero-presented-by">
@@ -210,7 +233,7 @@
     <section class="flyer-section" id="flyer" aria-label="Event poster">
       <div class="container">
         <img
-          src="assets/flyer_2026.png"
+          src="assets/flyer_2026.png?cachebust=yes"
           alt="Snallyfest 2026 official lineup poster — August 14 &amp; 15, Frederick Maryland — featuring Edward!, LITZ, Weed Coughin, Good Time Jordie, and 30+ more bands across 5 venues"
           class="flyer-img"
           loading="eager"
@@ -256,15 +279,15 @@
     >
       <div class="container">
         <h2 class="section-title">GET YOUR TICKETS</h2>
-        <!-- Replace href with actual ticket URL when available -->
         <a
-          href="#"
+          href="https://buytickets.at/braindeadlive/2322599"
           class="btn btn-secondary btn-large"
           id="ticket-link"
           data-umami-event="buy-tickets"
-          aria-label="Purchase tickets (coming soon)"
+          aria-label="Purchase tickets"
+          target="_blank"
         >
-          Tickets Coming Soon
+          BUY NOW
         </a>
 
         <hr class="section-divider" />
