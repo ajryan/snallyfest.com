@@ -378,18 +378,102 @@ section { padding: 5rem 0; position: relative; }
 .ticket-note a { color: var(--pink); text-decoration: none; }
 .ticket-note a:hover { text-decoration: underline; }
 
+/* ── Ticket info two-column grid ────────────────────────────── */
+.ticket-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+/* ── Ticket tiers list ───────────────────────────────────────── */
+.ticket-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  /* inherit Georgia serif from .section-sub convention */
+  font-family: Georgia, Cambria, 'Palatino Linotype', Palatino, serif;
+}
+
+.ticket-tier {
+  border-left: 3px solid var(--pink);
+  padding-left: 1.1rem;
+}
+
+.ticket-tier-price {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--pink);
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
+}
+
+.ticket-tier-price a {
+  color: #af7a6a;
+}
+
+.ticket-tier-meta {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
+}
+
+.ticket-tier-detail {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.ticket-tier-detail a {
+  color: var(--blue);
+}
+
+/* ── Shirt stack (layered) ───────────────────────────────────── */
+.shirt-stack {
+  position: relative;
+  /* aspect-ratio matches shirt portrait shape + extra room for rotation */
+  aspect-ratio: 0.85 / 1;
+}
+
+.shirt-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.shirt-img--back {
+  position: absolute;
+  width: 80%;
+  top: 0;
+  right: 0;
+  transform: rotate(7deg);
+  transform-origin: top right;
+  z-index: 1;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.65));
+  opacity: 0.85;
+}
+
+.shirt-img--front {
+  position: absolute;
+  width: 83%;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  filter: drop-shadow(0 0 20px rgba(157, 216, 236, 0.15)) drop-shadow(0 6px 22px rgba(0,0,0,0.7));
+}
+
 
 /* ── Merged tickets + venues section ────────────────────────── */
-.tickets-section { text-align: center; }
+.tickets-section, .venues-section { text-align: center; }
+.venues-section {
+  background: var(--bg-alt);
+}
 
+.tickets-venues .section-title { color: var(--pink); }
 .tickets-section .section-title { color: var(--pink); }
 
-.section-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 3.5rem auto;
-  width: 60%;
-}
+
 
 .venues-heading {
   font-size: clamp(1.4rem, 3.5vw, 2.2rem);
@@ -397,6 +481,36 @@ section { padding: 5rem 0; position: relative; }
   text-align: center;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+}
+
+/* Creek Stage — pulled above the grid as the main stage */
+.venue-feature {
+  margin-bottom: 1.25rem;
+}
+
+.venue-main {
+  display: inline-block;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  padding: 0.45rem 1.1rem;
+  border-width: 2px;
+}
+
+.venue-partners {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.venue-partners a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(157, 216, 236, 0.4);
+  transition: border-color 0.18s;
+}
+
+.venue-partners a:hover {
+  border-bottom-color: var(--blue);
 }
 
 .venues-grid {
@@ -408,11 +522,11 @@ section { padding: 5rem 0; position: relative; }
 }
 
 .venue {
-  padding: 0.55rem 1.3rem;
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  padding: 0.35rem .6rem;
+  border: 1px solid var(--pink);
+  color: var(--pink);
   text-transform: uppercase;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 
@@ -503,7 +617,7 @@ section { padding: 5rem 0; position: relative; }
    GALLERY
    ============================================================ */
 .gallery-section {
-  background: var(--bg);
+  background: var(--bg-alt);
   padding: 4rem 0;
 }
 
@@ -540,7 +654,7 @@ section { padding: 5rem 0; position: relative; }
    EMAIL SIGNUP
    ============================================================ */
 .signup-section {
-  background: var(--bg-alt);
+  background: var(--bg);
   text-align: center;
   padding-bottom: 2.5rem;
 }
@@ -554,6 +668,7 @@ section { padding: 5rem 0; position: relative; }
   max-width: 440px;
   margin: 0 auto;
   align-items: stretch;
+  font-family: Georgia, Cambria, 'Palatino Linotype', Palatino, serif;
 }
 
 .signup-row {
@@ -569,7 +684,7 @@ section { padding: 5rem 0; position: relative; }
   background: transparent;
   border: 2px solid var(--border);
   color: var(--text);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: inherit;
   outline: none;
   transition: border-color 0.18s;
@@ -583,7 +698,7 @@ section { padding: 5rem 0; position: relative; }
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   cursor: pointer;
   text-align: left;
@@ -728,6 +843,54 @@ section { padding: 5rem 0; position: relative; }
 }
 .lightbox-close:hover { opacity: 1; }
 
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  /* same frosted-glass treatment as the section scroll arrows */
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: opacity 0.18s, background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.lightbox-nav svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.65);
+  border-color: var(--blue);
+  color: var(--blue);
+  outline: none;
+}
+
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+/* keep the photo clear of the arrows on narrow screens */
+@media (max-width: 600px) {
+  .lightbox img { max-width: calc(100vw - 8rem); }
+  .lightbox-nav { width: 40px; height: 40px; }
+  .lightbox-nav svg { width: 20px; height: 20px; }
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+}
+
 
 /* ============================================================
    RESPONSIVE
@@ -737,6 +900,17 @@ section { padding: 5rem 0; position: relative; }
   .hero-presented-by {
     bottom: calc(1.25rem + 44px + 0.75rem);
     letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 660px) {
+  .ticket-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shirt-stack {
+    max-width: 340px;
+    margin: 0 auto;
   }
 }
 

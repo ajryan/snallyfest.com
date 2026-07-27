@@ -301,7 +301,7 @@
     </section>
 
     <!-- ============================================================
-       TICKETS + VENUES (merged)
+       TICKETS
        ============================================================ -->
     <section
       class="tickets-section"
@@ -321,25 +321,126 @@
           BUY NOW
         </a>
 
-        <hr class="section-divider" />
+        <div class="ticket-info-grid">
+          <div class="ticket-tiers">
+            <div class="ticket-tier">
+              <p class="ticket-tier-price">
+                $25 GA WRISTBAND <a href="get">↠ buy</a>
+              </p>
+              <p class="ticket-tier-detail">
+                Entry to every Snallyfest show all weekend long
+              </p>
+              <p class="ticket-tier-meta">
+                Pick up at Creek stage ticket booth 8/15 + guest list for
+                Snadbox kickoff on 8/14.
+              </p>
+            </div>
+            <div class="ticket-tier">
+              <p class="ticket-tier-price">
+                $40 SNALLY BUNDLES <a href="get">↠ buy</a>
+              </p>
+              <p class="ticket-tier-detail">
+                Includes GA Wristband AND a Snallyfest T-shirt
+              </p>
+            </div>
+            <div class="ticket-tier">
+              <p class="ticket-tier-price">In person fee-free sales</p>
+              <p class="ticket-tier-detail">
+                In-store at
+                <a href="https://www.instagram.com/recordexchange__frederick_md"
+                  >Record Exchange</a
+                >
+                and
+                <a href="https://www.instagram.com/onegoodsco">One Goods Co</a>
+              </p>
+            </div>
+            <div class="ticket-tier">
+              <p class="ticket-tier-price">
+                À la carte tix for each venue $10-$15
+              </p>
+              <p class="ticket-tier-detail">(or free entry with a wristband)</p>
+            </div>
+            <div class="ticket-tier">
+              <p class="ticket-tier-price">
+                T-shirts $25 day of show while supplies last
+              </p>
+            </div>
+          </div>
 
-        <h2 class="venues-heading">
-          Two days &middot; Five venues &middot; 30+ bands
-        </h2>
-        <ul class="venues-grid" role="list">
-          <li class="venue">Creek Stage</li>
-          <li class="venue">Sky Stage</li>
-          <li class="venue">Cafe Nola</li>
-          <li class="venue">Sandbox Brewhouse</li>
-          <li class="venue">Eagles Club</li>
-        </ul>
-
-        <div
-          id="venue-map"
-          class="venue-map"
-          aria-label="Map of the five Snallyfest venues in downtown Frederick, Maryland"
-        ></div>
+          <div class="shirt-stack" aria-label="Snallyfest 2026 t-shirt designs">
+            <img
+              src="assets/shirt-back.png"
+              alt="Snallyfest 2026 t-shirt back — full lineup printed on back"
+              class="shirt-img shirt-img--back"
+              loading="lazy"
+            />
+            <img
+              src="assets/shirt-front.png"
+              alt="Snallyfest 2026 t-shirt front — dark shirt with eye graphic and text"
+              class="shirt-img shirt-img--front"
+              loading="lazy"
+            />
+          </div>
+        </div>
       </div>
+      <a href="#venues" class="section-arrow" aria-label="Scroll to venues">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          aria-hidden="true"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- ============================================================
+       VENUES
+       ============================================================ -->
+    <section id="venues" class="venues-section">
+      <div class="container">
+        <div class="ticket-info-grid">
+          <div>
+            <h2 class="venues-heading">
+              Two days &middot; Five venues &middot; 30+ bands
+            </h2>
+            <div class="venue-feature">
+              <p class="venue venue-main">Creek Stage</p>
+              <p class="venue-partners">
+                Beer by
+                <a
+                  href="https://www.sandboxbrewhouse.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Sandbox Brewhouse</a
+                >, food by
+                <a
+                  href="https://grilledcheeseplease.online/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Cheese Please</a
+                >
+              </p>
+            </div>
+
+            <ul class="venues-grid" role="list">
+              <li class="venue">Sky Stage</li>
+              <li class="venue">Cafe Nola</li>
+              <li class="venue">Sandbox Brewhouse</li>
+              <li class="venue">Eagles Club</li>
+            </ul>
+          </div>
+
+          <div
+            id="venue-map"
+            class="venue-map"
+            aria-label="Map of the five Snallyfest venues in downtown Frederick, Maryland"
+          ></div>
+        </div>
+      </div>
+
       <a
         href="#signup"
         class="section-arrow"

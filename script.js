@@ -93,29 +93,57 @@ lightbox.setAttribute('aria-modal', 'true');
 lightbox.setAttribute('aria-label', 'Photo lightbox');
 lightbox.innerHTML =
   '<button class="lightbox-close" aria-label="Close photo">&times;</button>' +
+  '<button class="lightbox-nav lightbox-prev" aria-label="Previous photo">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<polyline points="15 18 9 12 15 6"></polyline></svg>' +
+  '</button>' +
+  '<button class="lightbox-nav lightbox-next" aria-label="Next photo">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<polyline points="9 18 15 12 9 6"></polyline></svg>' +
+  '</button>' +
   '<img src="" alt="">';
 document.body.appendChild(lightbox);
 
 const lbImg   = lightbox.querySelector('img');
 const lbClose = lightbox.querySelector('.lightbox-close');
+const lbPrev  = lightbox.querySelector('.lightbox-prev');
+const lbNext  = lightbox.querySelector('.lightbox-next');
 
-document.querySelectorAll('.gallery-strip img').forEach(img => {
+const galleryImgs = Array.from(document.querySelectorAll('.gallery-strip img'));
+let lbIndex = 0;
+
+galleryImgs.forEach((img, i) => {
   img.setAttribute('tabindex', '0');
   img.setAttribute('role', 'button');
   img.setAttribute('aria-label', 'View photo full-size');
 
-  img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  img.addEventListener('click', () => openLightbox(i));
   img.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      openLightbox(img.src, img.alt);
+      openLightbox(i);
     }
   });
 });
 
-function openLightbox(src, alt) {
-  lbImg.src = src;
-  lbImg.alt = alt;
+// only show the arrows when there's more than one photo to move between
+if (galleryImgs.length < 2) {
+  lbPrev.hidden = true;
+  lbNext.hidden = true;
+}
+
+function showLightboxImage(i) {
+  // wrap around at both ends
+  lbIndex = (i + galleryImgs.length) % galleryImgs.length;
+  const img = galleryImgs[lbIndex];
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+}
+
+function openLightbox(i) {
+  showLightboxImage(i);
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
   lbClose.focus();
@@ -128,8 +156,16 @@ function closeLightbox() {
 }
 
 lbClose.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', () => showLightboxImage(lbIndex - 1));
+lbNext.addEventListener('click', () => showLightboxImage(lbIndex + 1));
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLightbox(); return; }
+  if (!lightbox.classList.contains('active') || galleryImgs.length < 2) return;
+  if (e.key === 'ArrowLeft')  showLightboxImage(lbIndex - 1);
+  if (e.key === 'ArrowRight') showLightboxImage(lbIndex + 1);
+});
 
 
 // ── Gallery drag-to-scroll ───────────────────────────────────
