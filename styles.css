@@ -909,7 +909,9 @@ section { padding: 5rem 0; position: relative; }
   }
 
   .shirt-stack {
-    max-width: 340px;
+    /* auto margins disable grid stretch, so set the width explicitly —
+       without it the stack (whose children are all absolute) collapses to 0 */
+    width: min(340px, 100%);
     margin: 0 auto;
   }
 }
