@@ -9,7 +9,7 @@ Static landing page for **Snallyfest** — a two-day music festival in Frederick
 ## Stack
 
 Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
-- CDNFonts: Death Record · zai Olivetti Lettera 22 Typewriter (loaded via `<link>` in `index.html`)
+- zai Olivetti Lettera 22 Typewriter (self-hosted at `assets/fonts/`, `@font-face` in `styles.css`) · Pacifico (Google Fonts)
 - Leaflet 1.9.4 (vendored at `assets/vendor/leaflet/`) + CARTO `dark_all` basemap tiles (free with attribution) for the venue map
 - `.nojekyll` prevents GitHub Pages from running Jekyll
 
@@ -20,7 +20,8 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 | `index.html` | Single-page site — all sections |
 | `styles.css` | All styles; CSS custom properties at `:root` |
 | `script.js` | Hero clip rotation (`HERO_CLIPS`), gallery lightbox, drag-to-scroll, venue map (Leaflet), Mailchimp signup (JSONP submit) |
-| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `fest-archive-01..19.jpg`, `flyer_2026.png`) + hero clips (`hero-01..17.mp4` — ≤10 s h264 segments: 01–03 cut from `edward-snallyfest-2025.mp4`, 04–17 from phone .movs; raw sources removed from the repo, 01–03's source lives in git history) |
+| `assets/` | Images (`edward-01..07.jpg`, `fest-2025-01..10.jpg`, `fest-archive-01..19.jpg`, `flyer_2026.png`/`.webp`, `shirt-front/back.png`/`.webp`) + hero clips (`hero-01..17.mp4` — ≤10 s h264 segments: 01–03 cut from `edward-snallyfest-2025.mp4`, 04–17 from phone .movs; raw sources removed from the repo, 01–03's source lives in git history). PNGs that have a `.webp` sibling are served via `<picture>` (WebP + PNG fallback); the PNG stays as the OG/Twitter meta image for social-crawler compatibility. |
+| `assets/fonts/` | Self-hosted Olivetti Lettera 22 (`.woff2` + `.woff` fallback) |
 | `assets/vendor/leaflet/` | Vendored Leaflet 1.9.4 (`leaflet.js`, `leaflet.css`) |
 | `favicon.ico` / `favicon.png` / `apple-touch-icon.png` | Favicons (woodcut eye artwork) — root level |
 | `sitemap.xml` / `robots.txt` | SEO — single-URL sitemap; robots points to it |
@@ -43,7 +44,7 @@ Plain HTML / CSS / JavaScript. No framework, no bundler, no dependencies beyond:
 | Olivetti Lettera 22 | `'zai Olivetti Lettera 22 Typewriter'` | Primary — all headings, body, buttons, venues |
 | Pacifico | `'Pacifico'` | Secondary — hero dates/location, section subtitles |
 
-Olivetti Lettera via `fonts.cdnfonts.com` (free personal use; commercial license required).
+Olivetti Lettera is self-hosted at `assets/fonts/` (`@font-face` in `styles.css`, `font-display: swap`) — originally sourced from `fonts.cdnfonts.com` (free personal use; commercial license required).
 Pacifico via Google Fonts (free, open source).
 
 Hero title uses `.letter-cap` spans on the first and last letters (`font-size: 1.38em; vertical-align: bottom`) to reproduce the arched S…T size effect from the flyer.

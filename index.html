@@ -143,11 +143,8 @@
       }
     </script>
 
-    <!-- Olivetti Lettera 22: primary font (matches flyer body text) -->
-    <link
-      href="https://fonts.cdnfonts.com/css/zai-olivetti-lettera-22-typewriter"
-      rel="stylesheet"
-    />
+    <!-- Olivetti Lettera 22: primary font (matches flyer body text) —
+         self-hosted in assets/fonts/, @font-face is in styles.css -->
     <!-- Pacifico: secondary font (best match for "August / 2026" script on flyer) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
@@ -192,17 +189,27 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-logo-wrap">
-          <img src="assets/logo.png" alt="Snallyfest" class="hero-logo" />
+          <img
+            src="assets/logo.png"
+            alt="Snallyfest"
+            class="hero-logo"
+            width="534"
+            height="107"
+          />
         </h1>
         <img
           src="assets/dates.png"
           alt="August 14th &amp; 15th 2026"
           class="hero-dates-img"
+          width="519"
+          height="105"
         />
         <img
           src="assets/location.png"
           alt="Frederick, Maryland"
           class="hero-location-img"
+          width="531"
+          height="54"
         />
         <div class="hero-cta">
           <a
@@ -275,12 +282,17 @@
        ============================================================ -->
     <section class="flyer-section" id="flyer" aria-label="Event poster">
       <div class="container">
-        <img
-          src="assets/flyer_2026.png?cachebust=yes"
-          alt="Snallyfest 2026 official lineup poster — August 14 &amp; 15, Frederick Maryland — featuring Edward!, LITZ, Weed Coughin, Good Time Jordie, and 30+ more bands across 5 venues"
-          class="flyer-img"
-          loading="eager"
-        />
+        <picture>
+          <source srcset="assets/flyer_2026.webp?cachebust=yes" type="image/webp" />
+          <img
+            src="assets/flyer_2026.png?cachebust=yes"
+            alt="Snallyfest 2026 official lineup poster — August 14 &amp; 15, Frederick Maryland — featuring Edward!, LITZ, Weed Coughin, Good Time Jordie, and 30+ more bands across 5 venues"
+            class="flyer-img"
+            width="1080"
+            height="1350"
+            loading="eager"
+          />
+        </picture>
       </div>
       <button
         class="flyer-share"
@@ -337,7 +349,13 @@
           <div class="ticket-tiers">
             <div class="ticket-tier">
               <p class="ticket-tier-price">
-                $25 GA WRISTBAND <a href="get">↠ buy</a>
+                $25 GA WRISTBAND
+                <a
+                  href="https://buytickets.at/braindeadlive/2322599"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >↠ buy</a
+                >
               </p>
               <p class="ticket-tier-detail">
                 Entry to every Snallyfest show all weekend long
@@ -349,7 +367,13 @@
             </div>
             <div class="ticket-tier">
               <p class="ticket-tier-price">
-                $40 SNALLY BUNDLES <a href="get">↠ buy</a>
+                $40 SNALLY BUNDLES
+                <a
+                  href="https://buytickets.at/braindeadlive/2322599"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >↠ buy</a
+                >
               </p>
               <p class="ticket-tier-detail">
                 Includes GA Wristband AND a Snallyfest T-shirt
@@ -380,18 +404,28 @@
           </div>
 
           <div class="shirt-stack" aria-label="Snallyfest 2026 t-shirt designs">
-            <img
-              src="assets/shirt-back.png"
-              alt="Snallyfest 2026 t-shirt back — full lineup printed on back"
-              class="shirt-img shirt-img--back"
-              loading="lazy"
-            />
-            <img
-              src="assets/shirt-front.png"
-              alt="Snallyfest 2026 t-shirt front — dark shirt with eye graphic and text"
-              class="shirt-img shirt-img--front"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="assets/shirt-back.webp" type="image/webp" />
+              <img
+                src="assets/shirt-back.png"
+                alt="Snallyfest 2026 t-shirt back — full lineup printed on back"
+                class="shirt-img shirt-img--back"
+                width="879"
+                height="901"
+                loading="lazy"
+              />
+            </picture>
+            <picture>
+              <source srcset="assets/shirt-front.webp" type="image/webp" />
+              <img
+                src="assets/shirt-front.png"
+                alt="Snallyfest 2026 t-shirt front — dark shirt with eye graphic and text"
+                class="shirt-img shirt-img--front"
+                width="939"
+                height="900"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -555,216 +589,288 @@
         <img
           src="assets/fest-2025-01.jpg"
           alt="snallyfest concert performance"
+          width="933"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-01.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-01.jpg"
           alt="snallyfest concert performance"
+          width="1170"
+          height="1170"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-02.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-02.jpg"
           alt="snallyfest concert performance"
+          width="1054"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-03.jpg"
           alt="snallyfest concert performance"
+          width="394"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-02.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-04.jpg"
           alt="snallyfest concert performance"
+          width="394"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-05.jpg"
           alt="snallyfest concert performance"
+          width="497"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-05.jpg"
           alt="snallyfest concert performance"
+          width="933"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-08.jpg"
           alt="snallyfest concert performance"
+          width="999"
+          height="688"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-06.jpg"
           alt="snallyfest concert performance"
+          width="933"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-03.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-07.jpg"
           alt="snallyfest concert performance"
+          width="623"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-03.jpg"
           alt="snallyfest concert performance"
+          width="1042"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-08.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-04.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-09.jpg"
           alt="snallyfest concert performance"
+          width="708"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-07.jpg"
           alt="snallyfest concert performance"
+          width="1018"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-10.jpg"
           alt="snallyfest concert performance"
+          width="394"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-09.jpg"
           alt="snallyfest concert performance"
+          width="1023"
+          height="690"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-11.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-05.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-12.jpg"
           alt="snallyfest concert performance"
+          width="544"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-04.jpg"
           alt="snallyfest concert performance"
+          width="1051"
+          height="661"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-13.jpg"
           alt="snallyfest concert performance"
+          width="560"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-06.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-14.jpg"
           alt="snallyfest concert performance"
+          width="560"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-06.jpg"
           alt="snallyfest concert performance"
+          width="442"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-15.jpg"
           alt="snallyfest concert performance"
+          width="560"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-2025-10.jpg"
           alt="snallyfest concert performance"
+          width="1026"
+          height="667"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-16.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/edward-07.jpg"
           alt="snallyfest concert performance"
+          width="700"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-17.jpg"
           alt="snallyfest concert performance"
+          width="394"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-18.jpg"
           alt="snallyfest concert performance"
+          width="525"
+          height="700"
           loading="lazy"
           role="listitem"
         />
         <img
           src="assets/fest-archive-19.jpg"
           alt="snallyfest concert performance"
+          width="524"
+          height="700"
           loading="lazy"
           role="listitem"
         />
@@ -776,7 +882,13 @@
        ============================================================ -->
     <footer class="site-footer" id="footer" aria-label="Site footer">
       <div class="container">
-        <img src="assets/logo.png" alt="Snallyfest" class="footer-logo" />
+        <img
+          src="assets/logo.png"
+          alt="Snallyfest"
+          class="footer-logo"
+          width="534"
+          height="107"
+        />
         <p class="footer-dates">
           August 14 &amp; 15, 2026 &middot; Frederick, Maryland
         </p>

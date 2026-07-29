@@ -14,6 +14,17 @@
   --border:     #2a2c2e;
 }
 
+/* Self-hosted (avoids a render-blocking third-party stylesheet request;
+   swap keeps text visible in the fallback font while this loads) */
+@font-face {
+  font-family: 'zai Olivetti Lettera 22 Typewriter';
+  src: url('assets/fonts/ZaiOlivettiLettera22Typewriter.woff2') format('woff2'),
+       url('assets/fonts/ZaiOlivettiLettera22Typewriter.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

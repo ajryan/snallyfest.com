@@ -53,8 +53,19 @@ if (heroVideo && HERO_CLIPS.length > 1) {
   }
 
   let queuedIdx = pickNextIdx();
-  standby.src = HERO_CLIPS[queuedIdx];
-  standby.load();
+
+  // Don't start downloading the next clip (~1-2MB) until the page has
+  // finished loading — otherwise it competes for bandwidth with the
+  // fonts/CSS/hero-01 video that are on the critical rendering path.
+  function queueStandbyLoad() {
+    standby.src = HERO_CLIPS[queuedIdx];
+    standby.load();
+  }
+  if (document.readyState === 'complete') {
+    queueStandbyLoad();
+  } else {
+    window.addEventListener('load', queueStandbyLoad, { once: true });
+  }
 
   function performSwap() {
     standby.currentTime = 0;
