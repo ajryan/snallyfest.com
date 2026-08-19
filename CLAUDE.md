@@ -84,6 +84,17 @@ Scroll arrows (`.section-arrow`) appear on: hero, flyer, t-shirt, venues. No arr
 
 Push to `main` branch. In repo Settings → Pages, set source to **Deploy from a branch** → `main` / `/ (root)`. The `.nojekyll` file is required.
 
+### Cache busting — bump this when you edit CSS/JS
+
+GitHub Pages serves `styles.css` and `script.js` with a long cache lifetime, so returning visitors get the stale file and a broken-looking layout until they hard-refresh. There is no build step to hash filenames, so the version is a manual query string:
+
+```html
+<link rel="stylesheet" href="styles.css?v=2" />
+<script src="script.js?v=2"></script>
+```
+
+**After changing `styles.css` or `script.js`, bump `?v=` in _both_ `index.html` and `snallyfest-2026.html`** (keep the two pages on the same number). Same convention applies to changed images — see `flyer_2026.png?v=3`. Editing a file without bumping means the change won't reach anyone who has already visited.
+
 ## SEO
 
 Both pages include: `<title>`, `<meta name="description">`, `<meta name="keywords">`, Open Graph tags, and Twitter Card tags. `snallyfest-2026.html` additionally carries the `<script type="application/ld+json">` MusicEvent schema block with the full performer list (the `offers` array was dropped with the ticket links).
